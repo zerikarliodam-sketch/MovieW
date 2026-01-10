@@ -39,7 +39,7 @@ const HeroBanner = () => {
       <div className='wrapper'>
         <div className='heroBannerContent'>
 
-          <span className='title'>Welcome</span>
+          <span className='title'>WELCOME</span>
           <span className='subtitle'>"The ultimate destination for movie lovers. Experience the magic with us.Explore Amediateka,Tv shows and Movies"</span>
 
           <div className='inputbox'>
