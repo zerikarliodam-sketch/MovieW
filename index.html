@@ -602,10 +602,10 @@
     /* ===== POPUP ===== */
 .video-popup{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;justify-content:center;align-items:center;z-index:9999}
 .video-popup.active{display:flex}
-.video-box{width:90%;max-width:900px;aspect-ratio:16/9;background:#000;position:relative;border-radius:14px;overflow:hidden}
+.video-box{width:90%;max-width:900px;aspect-ratio:20/14;background:#000;position:relative;border-radius:4px;overflow:visible}
 .video-box iframe,.video-box video{width:100%;height:100%}
 .close-btn{position: absolute;
-            top: 15px;
+            top: 1px;
             right: 20px;
             background: rgba(255,255,255,0.2);
             border: none;
@@ -1189,11 +1189,7 @@
             <div class="img-container"><img src="https://i.postimg.cc/tCtKV93Q/akaalchannel.png"><span class="hd-label">HD</span></div>
             <div class="title">Akaal</div>
 </div>
-        <div class="channel-link"  data-video="">
-            <div class="img-container"><img src=""><span class="hd-label">HD</span></div>
-            <div class="title"></div>
-</div>
- 
+     
         <div class="channel-link"  data-video="https://alpha.tv.online.tm/hls/ch006.m3u8">
             <div class="img-container"><img src="https://i.postimg.cc/KYqN6HtH/asgabat.png"><span class="hd-label">HD</span></div>
             <div class="title">Ashg'obod TV</div>
@@ -1220,103 +1216,46 @@
     </div>
 
     
-   <div class="netlivy-ultra-video-player-fullscreen-overlay" id="netlivyUltraPlayerOverlay">
-    <div class="netlivy-ultra-video-player-top-navigation-bar">
-        <h3 id="netlivy-current-active-channel-title" style="margin:0">Media Player</h3>
-        <i class="fa-solid fa-chevron-down" style="font-size:24px; cursor:pointer;" onclick="netlivyTerminateVideoPlayback()"></i>
     </div>
-    <video id="netlivy-ultra-main-video-source-element" controls autoplay playsinline></video>
-</div>
-
-<script>
-    const netlivyHlsInstance = new Hls();
-    const netlivyVideoElement = document.getElementById('netlivy-ultra-main-video-source-element');
-    const netlivyPlayerOverlayContainer = document.getElementById('netlivyUltraPlayerOverlay');
-
+<!-- POPUP --><div class="video-popup" id="videoPopup">
+  <div class="video-box">
+    <div id="popupTitle" style="position:absolute;top:10px;left:16px;font-size:16px;font-weight:600;z-index:2"></div>
     
+     <i  class="fa-solid fa-chevron-down" style="font-size:23px; cursor:pointer;margin-left: 300px;margin-top: 7px;" onclick="closePopup()"></i>
+   
+    <video id="videoPlayer" controls autoplay></video>
+  </div>
+    
+</div><script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script><script>
+const popup=document.getElementById('videoPopup');
+const video=document.getElementById('videoPlayer');
+let hls;
 
-    function netlivyInitiateVideoPlayback(videoUrl, channelName) {
-        document.getElementById('netlivy-current-active-channel-title').innerText = channelName;
-        netlivyPlayerOverlayContainer.style.display = 'flex';
-        if (Hls.isSupported()) {
-            netlivyHlsInstance.loadSource(videoUrl);
-            netlivyHlsInstance.attachMedia(netlivyVideoElement);
-        } else if (netlivyVideoElement.canPlayType('application/vnd.apple.mpegurl')) {
-            netlivyVideoElement.src = videoUrl;
-        }
-    }
+document.querySelectorAll('.channel-link').forEach(ch=>{
+  ch.onclick=()=>openPopup(ch.dataset.video, ch.querySelector('.title').innerText);
+});
 
-    function netlivyTerminateVideoPlayback() {
-        netlivyPlayerOverlayContainer.style.display = 'none';
-        netlivyVideoElement.pause();
-        netlivyHlsInstance.detachMedia();
-    }
+function openPopup(url, title){
+  popup.classList.add('active');
+  document.getElementById('popupTitle').innerText = title;
+  if(video.canPlayType('application/vnd.apple.mpegurl')){
+    video.src=url;
+  }else if(Hls.isSupported()){
+    hls=new Hls();
+    hls.loadSource(url);
+    hls.attachMedia(video);
+  }
+}
 
-    function netlivyInitializeOneUiComponent() {
-        const netlivyCurrentDate = new Date();
-        const netlivyCurrentMinutesInDay = netlivyCurrentDate.getHours() * 60 + netlivyCurrentDate.getMinutes();
-        const netlivyDayString = String(netlivyCurrentDate.getDate()).padStart(2, '0');
-        const netlivyMonthString = String(netlivyCurrentDate.padStart ? netlivyCurrentDate.getMonth() + 1 : netlivyCurrentDate.getMonth() + 1).toString().padStart(2, '0');
-        const netlivyFormattedToday = `${netlivyDayString}.${netlivyMonthString}`;
+function closePopup(){
+  document.getElementById('popupTitle').innerText = '';
+  popup.classList.remove('active');
+  video.pause();
+  video.src='';
+  if(hls){hls.destroy();hls=null}
+}
+</script>
 
-        const netlivyCurrentHour = netlivyCurrentDate.getHours();
-        document.getElementById('netlivy-dynamic-greeting-message').innerText = 
-            netlivyCurrentHour < 12 ? "Xayrli tong" : netlivyCurrentHour < 18 ? "Xayrli kun" : "Xayrli kecha";
-        
-        document.getElementById('netlivy-formatted-full-date-display').innerText = 
-            netlivyCurrentDate.toLocaleDateString('uz-UZ', { day:'numeric', month:'long', weekday:'long'});
-
-        const netlivyEpgContainer = document.getElementById('netlivy-dynamic-epg-list-container');
-        
-        const netlivyFilteredEpgItems = netlivyEpgDataSource.filter(item => {
-            const netlivyDateParts = item.date.split('.');
-            const netlivyItemDay = parseInt(netlivyDateParts[0]);
-            const netlivyItemMonth = parseInt(netlivyDateParts[1]);
-            const netlivyItemDateObj = new Date(netlivyCurrentDate.getFullYear(), netlivyItemMonth - 1, netlivyItemDay);
-            const netlivyTodayBaseline = new Date(netlivyCurrentDate.getFullYear(), netlivyCurrentDate.getMonth(), netlivyCurrentDate.getDate());
-
-            if (netlivyItemDateObj < netlivyTodayBaseline) return false;
-
-            if (item.date.includes(netlivyFormattedToday)) {
-                const [h, m] = item.time.split(':').map(Number);
-                const netlivyItemStartMinutes = h * 60 + m;
-                // Efir boshlanganidan 2 soat (120 min) o'tgach o'chadi
-                if (netlivyCurrentMinutesInDay > (netlivyItemStartMinutes + 240)) return false; 
-            }
-            return true;
-        });
-
-        netlivyEpgContainer.innerHTML = netlivyFilteredEpgItems.map(item => {
-            const [h, m] = item.time.split(':').map(Number);
-            const netlivyItemTotalMinutes = h * 60 + m;
-            const netlivyIsToday = item.date.includes(netlivyFormattedToday);
-            const netlivyIsCurrentlyLive = netlivyIsToday && 
-                (netlivyCurrentMinutesInDay >= netlivyItemTotalMinutes && netlivyCurrentMinutesInDay < netlivyItemTotalMinutes + 120);
-
-            // QVZ yoki boshqa haftalik efir tugmasi har doim bosilganda pleyerni ochadi
-            return `
-                <div class="netlivy-epg-event-item-interactive-card ${netlivyIsCurrentlyLive ? 'netlivy-is-currently-broadcasting' : ''}" 
-                     onclick="netlivyInitiateVideoPlayback('${item.url}', '${item.ch} - ${item.title}')">
-                    <div class="netlivy-epg-event-time-metadata-box">
-                        <span class="netlivy-epg-event-start-time-text">${item.time}</span>
-                        <span class="netlivy-epg-event-date-subtext">${item.date.substring(0,5)}</span>
-                    </div>
-                    <div class="netlivy-epg-event-main-info-container">
-                        <span class="netlivy-epg-event-program-title-label">
-                            ${netlivyIsCurrentlyLive ? '<span class="netlivy-live-status-pulsating-indicator"></span>' : ''}
-                            ${item.title || 'Maxsus ko\'rsatuv'}
-                        </span>
-                        <span class="netlivy-epg-event-channel-identity-text">${item.ch} • ${netlivyIsToday ? 'Bugun' : item.day}</span>
-                    </div>
-                    <i class="fa-solid ${netlivyIsCurrentlyLive ? 'fa-circle-play' : 'fa-play'}" 
-                       style="color:${netlivyIsCurrentlyLive ? 'var(--netlivy-primary-samsung-blue)' : 'var(--netlivy-text-color-dim-gray)'}; font-size:24px"></i>
-                </div>
-            `;
-        }).join('');
-    }
-
-    netlivyInitializeOneUiComponent();
-    setInterval(netlivyInitializeOneUiComponent, 60000);
 </script>
 </body>
 </html>
