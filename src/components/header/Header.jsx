@@ -78,7 +78,7 @@ const Header = () => {
             <ContentWrapper>
                 <div className="cent"> 
                 <div className="logo" onClick={()=> navigate("/")}>
-             <h1 className="logo">Digimovies</h1>
+             <h1 className="logo">N Movies</h1>
                 </div>
 
                 <ul className="menuItems">
@@ -105,7 +105,7 @@ const Header = () => {
             <div className="searchBar">
                 <ContentWrapper>
                     <div className='searchInput'>
-            <input type='text' className="inp" placeholder='Search Movie, Web Series, Tv Shows'
+            <input type='text' className="inp" placeholder='поиск медиатека и телепередачи, Web Series, Tv Shows'
                   onChange={(e)=>{setQuery(e.target.value)}}
                   onKeyDown={searchQuery}/>
 
