@@ -40,10 +40,10 @@ const HeroBanner = () => {
         <div className='heroBannerContent'>
 
           <span className='title'>Welcome</span>
-          <span className='subtitle'>"The ultimate destination for movie lovers. Experience the magic with us."</span>
+          <span className='subtitle'>"The ultimate destination for movie lovers. Experience the magic with us.Explore Amediateka,Tv shows and Movies"</span>
 
           <div className='inputbox'>
-            <input type='text' placeholder='Search Movie, Web Series, Tv Shows'
+            <input type='text' placeholder='поиск а медиатека и телепередачи'
                   onChange={(e)=>{setQuery(e.target.value)}}
                   onKeyDown={searchQuery}></input>
                   <button onClick={searchQuery}> Search</button>
