@@ -1141,10 +1141,20 @@ document.querySelectorAll('.channel-link').forEach(ch=>{
 function openPopup(url, title){
   popup.classList.add('active');
   document.getElementById('popupTitle').innerText = title;
+
+  video.pause();
+  video.removeAttribute('src');
+  video.load();
+
   if(video.canPlayType('application/vnd.apple.mpegurl')){
-    video.src=url;
-  }else if(Hls.isSupported()){
-    hls=new Hls();
+    video.src = url;
+    video.play();
+  } else if(Hls.isSupported()){
+    hls = new Hls({
+      lowLatencyMode: true,
+      maxBufferLength: 6,
+      liveSyncDuration: 2
+    });
     hls.loadSource(url);
     hls.attachMedia(video);
   }
