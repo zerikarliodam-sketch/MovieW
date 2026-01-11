@@ -105,7 +105,7 @@ const Header = () => {
             <div className="searchBar">
                 <ContentWrapper>
                     <div className='searchInput'>
-            <input type='text' className="inp" placeholder='поиск медиатека и телепередачи, Web Series, Tv Shows'
+            <input type='text' className="inp" placeholder='Поиск медиатека и телепередачи, Web Series, Tv Shows'
                   onChange={(e)=>{setQuery(e.target.value)}}
                   onKeyDown={searchQuery}/>
 
