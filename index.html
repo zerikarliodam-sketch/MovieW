@@ -500,6 +500,62 @@
             border-radius: 4px;
             font-weight: bold;
         }
+/* --- LOADING ANIMATSIYASI --- */
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--netlivy-background-phantom-black);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modern-loader {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader-circle {
+    width: 100px;
+    height: 100px;
+    border: 3px solid rgba(255, 255, 255, 0.05);
+    border-top: 3px solid var(--netlivy-primary-samsung-blue);
+    border-radius: 50%;
+    animation: spin 1s cubic-bezier(0.6, -0.2, 0.2, 1.2) infinite;
+}
+
+.loader-logo {
+    position: absolute;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #fff;
+    animation: pulse-text 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-text {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.95); }
+}
+
+.loader-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
     /* ===== POPUP ===== */
 .video-popup{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;justify-content:center;align-items:center;z-index:9999}
 .video-popup.active{display:flex}
@@ -542,7 +598,12 @@
     </style>
 </head>
 <body>
-
+<div id="loader-wrapper">
+    <div class="modern-loader">
+        <div class="loader-circle"></div>
+        <div class="loader-logo">NETLIVY</div>
+    </div>
+</div>
      <div class="scroll-row">
   
             
@@ -1168,6 +1229,13 @@ function closePopup(){
   video.src='';
   if(hls){hls.destroy();hls=null}
 }
+// Sayt yuklanib bo'lgach loader'ni o'chirish
+window.addEventListener("load", function() {
+    const loader = document.getElementById("loader-wrapper");
+    setTimeout(() => {
+        loader.classList.add("loader-hidden");
+    }, 1000); // 1 soniya ko'rinib turadi
+});
 </script>
 
 
