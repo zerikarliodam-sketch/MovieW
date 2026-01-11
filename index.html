@@ -1382,6 +1382,66 @@ function closePopup(){
 <audio id="main-audio"></audio>
 
 <script>
+const audio = document.getElementById('main-audio');
+let currentActiveItem = null;
+let isLoading = false;
+
+function playMusic(element, title, desc, url, img) {
+    const icon = element.querySelector('.overlay-btn i');
+
+    // Agar shu radio qayta bosilsa
+    if (currentActiveItem === element && !isLoading) {
+        if (audio.paused) {
+            audio.play();
+            icon.className = "fas fa-pause";
+        } else {
+            audio.pause();
+            icon.className = "fas fa-play";
+        }
+        return;
+    }
+
+    // Eski kartani tozalash
+    if (currentActiveItem) {
+        currentActiveItem.classList.remove('active');
+        const oldIcon = currentActiveItem.querySelector('.overlay-btn i');
+        if (oldIcon) oldIcon.className = "fas fa-play";
+    }
+
+    currentActiveItem = element;
+    element.classList.add('active');
+
+    // LOADING holati
+    isLoading = true;
+    icon.className = "fas fa-spinner fa-spin";
+
+    // Audio tozalash
+    audio.pause();
+    audio.removeAttribute('src');
+    audio.load();
+
+    // Yangi stream
+    audio.src = url;
+    audio.load();
+
+    // Stream tayyor bo‘lganda
+    audio.oncanplay = () => {
+        if (!isLoading) return;
+        isLoading = false;
+        audio.play();
+        icon.className = "fas fa-pause";
+    };
+
+    // Xatolik bo‘lsa
+    audio.onerror = () => {
+        isLoading = false;
+        icon.className = "fas fa-play";
+        alert("");
+    };
+}
+</script>
+
+<scriipt>
     const audio = document.getElementById('main-audio');
     const bottomPlayIcon = document.getElementById('master-play');
     let currentActiveItem = null; // Hozir qaysi karta faol ekanini saqlaydi
@@ -1430,7 +1490,7 @@ function closePopup(){
     // Pastki pleerdagi tugma bosilganda
     
     
-</script>
+</scriipt>
 
 </body>
 </html>
