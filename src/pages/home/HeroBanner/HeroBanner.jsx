@@ -46,7 +46,7 @@ const HeroBanner = () => {
             <input type='text' placeholder='Поиск а медиатека и телепередачи'
                   onChange={(e)=>{setQuery(e.target.value)}}
                   onKeyDown={searchQuery}></input>
-                  <button onClick={searchQuery}> Search</button>
+                  <button onClick={searchQuery}> Поиск</button>
           </div>
           
         </div>
