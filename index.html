@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Netlivy One UI - Ultra Edition</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -39,7 +39,7 @@
         }
 
         body {
-           
+
             color: var(--netlivy-text-color-main-white);
             font-family: 'Inter', sans-serif;  
             overflow-x: hidden;
@@ -60,7 +60,7 @@
             border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.05);
             margin: 0 24px 20px;
-            
+
         }
         .netlivy-smart-date-display-widget-container i { color: var(--netlivy-primary-samsung-blue); margin-right: 8px; }
 
@@ -198,7 +198,7 @@
         <img src="src/bolajon.jpg">
         <span>Bolajon TV</span>
     </div>
-  
+
 </div>
 
 
@@ -218,7 +218,7 @@
     const netlivyVideoElement = document.getElementById('netlivy-ultra-main-video-source-element');
     const netlivyPlayerOverlayContainer = document.getElementById('netlivyUltraPlayerOverlay');
 
-    
+
 
     function netlivyInitiateVideoPlayback(videoUrl, channelName) {
 
@@ -248,12 +248,12 @@
         const netlivyCurrentHour = netlivyCurrentDate.getHours();
         document.getElementById('netlivy-dynamic-greeting-message').innerText = 
             netlivyCurrentHour < 12 ? "Xayrli tong" : netlivyCurrentHour < 18 ? "Xayrli kun" : "Xayrli kecha";
-        
+
         document.getElementById('netlivy-formatted-full-date-display').innerText = 
             netlivyCurrentDate.toLocaleDateString('uz-UZ', { day:'numeric', month:'long', weekday:'long'});
 
         const netlivyEpgContainer = document.getElementById('netlivy-dynamic-epg-list-container');
-        
+
         const netlivyFilteredEpgItems = netlivyEpgDataSource.filter(item => {
             const netlivyDateParts = item.date.split('.');
             const netlivyItemDay = parseInt(netlivyDateParts[0]);
@@ -317,15 +317,17 @@
     <title>Netlivy - Медиатека </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  
-   
+
+
     <style>
+          @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
+
         body {
             background-color: black;
             color: white;
             font-family: 'Segoe UI', sans-serif;
             margin: 0;
-            
+
             padding: 0;
         }
 
@@ -376,7 +378,7 @@
             /* Pulsatsiya animatsiyasini ulash */
             animation: pulse-green 1s infinite;
         }
-    
+
 
         @keyframes pulse-green {
             0% {
@@ -391,7 +393,7 @@
                 transform: scale(0.95);
                 box-shadow: 0 0 0 0 rgba(0, 255, 0, 0);
             }
-            
+
         }
         /* ------------------------------------------- */
 
@@ -414,7 +416,7 @@
             display: block;
             transition: transform 0.2s ease;
           margin-left: 14px;
-           
+
         }
 
         .channel-link:hover {
@@ -441,14 +443,17 @@
 
         .hd-label {
             position: absolute;
-            bottom: 8px;
-            right: 8px;
-            background: #007bff;
-            padding: 2px 6px;
-            font-size: 11px;
-            border-radius: 4px;
-            font-weight: bold;
-            
+            bottom: 0;
+            right: 0;
+            background-color: #007bff;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size:10px;
+            padding: 6px 10px;
+            font-weight: 500;
+            border-top-left-radius: 7px;
+            border-bottom-right-radius: 1px;
+
         }
     .h-label {
             position: absolute;
@@ -472,7 +477,7 @@
             border-radius: 4px;
             font-weight: bold;
         }
-    
+
     .hd-labe {
             position: absolute;
             bottom: 8px;
@@ -482,7 +487,7 @@
             font-size: 11px;
             border-radius: 4px;
             font-weight: bold;
-            
+
         }
     .h-labe {
             position: absolute;
@@ -531,49 +536,49 @@
             align-items: center;
             justify-content: space-between;
         }
-        
-   
-    
+
+
+
 
         .title {
             margin-top: 10px;
             font-size: 15px;
             text-align: center;
-        
-          
+
+
         }
 
         .row-sep { margin-top: 0px; }
-        
+
         h2 { margin: 0; font-weight: 500; font-size: 24px; }
     </style>
 </head>
 <body>
 
      <div class="scroll-row">
-  
-            
+
+
     <div class="channel-link"  data-video="https://stream8.cinerama.uz/1011/tracks-v1a1/playlist.m3u8">
-            <div class="img-container"><img src="src/uzb.jpg"><span class="hd-labe">LIVE</span><span class="hd-label">HD</span></div>
+            <div class="img-container"><img src="src/uzb.jpg"><span class="hd-label">HD</span></div>
             <div class="title">O'zbekiston 24</div>
 </div>
               <div class="channel-link"  data-video="https://stream8.cinerama.uz/1018/playlist.m3u8">
             <div class="img-container"><img src="src/ftv.jpg"><span class="hd-label">HD</span></div>
             <div class="title">F TV</div>
 </div>
-    
-    
+
+
          <div class="channel-link"  data-video="https://stream8.cinerama.uz/1014/tracks-v1a1/playlist.m3u8">
             <div class="img-container"><img src="src/milliy.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Milliy TV</div>
 </div>
-    
-     
+
+
         <div class="channel-link"  data-video="https://stream8.cinerama.uz/1217/tracks-v1a1/playlist.m3u8">
             <div class="img-container"><img src="src/my5tv.jpg"><span class="hd-label">HD</span></div>
             <div class="title">MY5 TV</div>
 </div>
-     
+
         <div class="channel-link"  data-video="https://stream8.cinerama.uz/1013/tracks-v1a1/playlist.m3u8">
             <div class="img-container"><img src="src/mahalla.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Mahalla TV</div>
@@ -582,22 +587,22 @@
             <div class="img-container"><img src="src/bizcinema.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Biz Cinema </div>
 </div>
-     
+
        <div class="channel-link"  data-video="https://fl.biztv.media/music_720_QAKpGmVUjaPApCNjpsgBxrdqNihAkl/index.m3u8">
             <div class="img-container"><img src="src/bizmusic.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Biz Music</div>
 </div>
-     
+
           <div class="channel-link"  data-video="https://stream8.cinerama.uz/1007/playlist.m3u8">
             <div class="img-container"><img src="src/bolajon.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Bolajon TV</div>
 </div>
-     
+
         <div class="channel-link"  data-video="https://stream8.cinerama.uz/1206/tracks-v1a1/playlist.m3u8">
             <div class="img-container"><img src="src/dasturxon.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Dasturxon TV</div>
 </div>
-     
+
         <div class="channel-link"  data-video="https://stream8.cinerama.uz/1006/tracks-v1a1/playlist.m3u8">
             <div class="img-container"><img src="src/dunyob.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Dunyo Bo'ylab</div>
@@ -614,45 +619,45 @@
             <div class="img-container"><img src="src/yoshlar.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Yoshlar TV</div>
 </div>
-     
+
     </div>
 
     <div class="row-sep"></div>
 
     <div class="scroll-row">
          <div class="channel-link"  data-video="https://stream8.cinerama.uz/1016/tracks-v1a1/mono.m3u8">
-            <div class="img-container"><img style="width: 100%; height: 100%;" src="src/zor.png"><span class="hd-labe">LIVE</span><span class="hd-label">HD</span></div>
+            <div class="img-container"><img style="width: 100%; height: 100%;" src="src/zor.png"><span class="hd-label">HD</span></div>
             <div class="title">ZO'R TV</div>
 </div>
-     
+
          <div class="channel-link"  data-video="https://stream8.cinerama.uz/1015/tracks-v1a1/playlist.m3u8">
             <div class="img-container"><img src="src/Uzreport.jpg"><span class="hd-label">HD</span></div>
             <div class="title">UzReport TV</div>
 </div>
-     
+
         <div class="channel-link" data-video="https://stream8.cinerama.uz/1017/tracks-v1a1/playlist.m3u8">
     <div class="img-container"><img src="src/sevimli.jpg"><span class="hd-labe">LIVE</span><span class="hd-label">HD</span></div>
     <div class="title">Sevimli TV</div>
   </div>
-        
+
           <div class="channel-link"  data-video="https://fl.biztv.media/biz_tv_720_uni8jhub4h8fub4idejswh8dh3j94finbu4nidj39inwsj92in3d/index.m3u8">
             <div class="img-container"><img src="src/biz.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Biz TV</div>
 </div>
-     
+
           <div class="channel-link"  data-video="https://stream8.cinerama.uz/1009/tracks-v1a1/playlist.m3u8">
             <div class="img-container"><img src="src/kinoteatr.jpg"><span class="hd-label">HD</span></div>
             <div class="title">KINOTEATR</div>
 </div>
-     
 
-     
+
+
           <div class="channel-link"  data-video="https://stream8.cinerama.uz/1005/tracks-v1a1/playlist.m3u8">
             <div class="img-container"><img src="src/madaniyat.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Madaniyat va Ma'rifat</div>
 </div>
-     
-        
+
+
          <div class="channel-link"  data-video="https://stream8.cinerama.uz/1008/tracks-v1a1/playlist.m3u8">
             <div class="img-container"><img src="src/navo.jpg"><span class="hd-label">HD</span></div>
             <div class="title">NAVO</div>
@@ -669,7 +674,7 @@
             <div class="img-container"><img src="src/uzbekiston.jpg"><span class="hd-label">HD</span></div>
             <div class="title">O'ZBEKISTON</div>
 </div>
-        
+
     </div>
     <div class="hr">
         <h2 style="padding: 10px;display: flex; align-items: center;font-size: 24px">| Russia TV <span class="online-dot"></span></h2>
@@ -680,7 +685,7 @@
             <div class="img-container"><img src="src/3abn.jpg"><span class="hd-label">HD</span>  </div>
             <div class="title">3ABN Russia</div>
 </div>
-     
+
       <div class="channel-link"  data-video="https://sitv.ru/hls/s86.m3u8">
             <div class="img-container"><img src="https://i.postimg.cc/fyVKKjF0/1hdmusictelevision.png"><span class="hd-label">HD</span></div>
             <div class="title">86 TV</div>
@@ -693,28 +698,28 @@
             <div class="img-container"><img src="https://static.kanade.cl/assets/img/profilepic_512px.png"><span class="hd-label">HD</span></div>
             <div class="title">360° News Russia</div>
 </div>
-     
-        
+
+
         <div class="channel-link"  data-video="http://live2-aisttv.cdnvideo.ru/aisttv2/aisttv.sdp/playlist.m3u8">
             <div class="img-container"><img src="https://i.imgur.com/TJowroY.png"><span class="hd-label">HD</span></div>
             <div class="title">AIST TV</div>
 </div>
-     
+
        <div class="channel-link"  data-video="https://stream.almaz-media.tv:8080/hls/576.m3u8">
             <div class="img-container"><img src="https://i.imgur.com/VfbHHBc.png"><span class="hd-label">HD</span></div>
             <div class="title">Almaznyy</div>
 </div>
-     
+
         <div class="channel-link"  data-video="http://stv.mediacdn.ru/live/cdn/ani/playlist.m3u8">
             <div class="img-container"><img src="https://i.imgur.com/AOEiQVr.png"><span class="hd-label">HD</span></div>
             <div class="title">ANI Мултфилм</div>
 </div>
-     
+
           <div class="channel-link"  data-video="http://serv25.vintera.tv:8081/test/aris/playlist.m3u8">
             <div class="img-container"><img src="https://i.imgur.com/CTFVEAb.png"><span class="hd-label">HD</span></div>
             <div class="title">АРИС 24</div>
 </div>
-     
+
           <div class="channel-link"  data-video="https://live.mediacdn.ru/sr1/arhis24/playlist.m3u8">
             <div class="img-container"><img src="https://i.imgur.com/blAtdkJ.png"><span class="hd-label">HD</span></div>
             <div class="title">Arkhyz 24</div>
@@ -727,7 +732,7 @@
             <div class="img-container"><img src="https://i.imgur.com/9WcnjQN.png"><span class="hd-label">HD</span></div>
             <div class="title">Astrahan TV</div>
 </div>
-        
+
           <div class="channel-link"  data-video="https://streaming.astrakhan.ru/astrakhanrusporthd/playlist.m3u8">
             <div class="img-container"><img src="https://i.imgur.com/9WcnjQN.png"><span class="hd-label">HD</span></div>
             <div class="title">Astrahan Sport</div>
@@ -740,7 +745,7 @@
             <div class="img-container"><img src="https://i.imgur.com/IDotHmQ.png"><span class="hd-label">HD</span></div>
             <div class="title">БСТ</div>
 </div>
-        
+
           <div class="channel-link"  data-video="https://streaming.thestream.cyou/live/210.m3u8">
             <div class="img-container"><img src="https://i.imgur.com/RUSX0rX.png"><span class="hd-label">HD</span></div>
             <div class="title">Канал 1</div>
@@ -757,32 +762,32 @@
             <div class="img-container"><img src="https://static.kanade.cl/assets/img/profilepic_512px.png"><span class="hd-label">HD</span></div>
             <div class="title">Детское кино ТV</div>
 </div>
-        
+
           <div class="channel-link"  data-video="https://streaming.thestream.cyou/live/44.m3u8">
             <div class="img-container"><img src="https://static.kanade.cl/assets/img/profilepic_512px.png"><span class="hd-label">HD</span></div>
             <div class="title">Дом Кино</div>
 </div>
-          
+
           <div class="channel-link"  data-video="https://hls-eniseytv.cdnvideo.ru/eniseytv/stream1/playlist.m3u8">
             <div class="img-container"><img src="https://static.kanade.cl/assets/img/profilepic_512px.png"><span class="hd-label">HD</span></div>
             <div class="title">Enisey</div>
 </div>
-             
+
           <div class="channel-link"  data-video="https://infochh.trkeurasia.ru/hlsinfoch/infochhd.m3u8">
             <div class="img-container"><img src="https://i.imgur.com/4JUHIVS.png"><span class="hd-label">HD</span></div>
             <div class="title">Еуро азия</div>
 </div>
-         
+
           <div class="channel-link"  data-video="https://cdn4.skygo.mn/live/disk1/Friday/HLSv3-FTA/Friday.m3u8">
             <div class="img-container"><img src="https://i.imgur.com/N2z3EZC.png"><span class="hd-label">HD</span></div>
             <div class="title">Интернатионал TV</div>
 </div>
-            
+
           <div class="channel-link"  data-video="https://video.govoritmoskva.ru/rufm/index.m3u8">
             <div class="img-container"><img src="https://i.imgur.com/z2mxf3E.png"><span class="hd-label">HD</span></div>
             <div class="title">Govorit Moskva</div>
 </div>
-         
+
           <div class="channel-link"  data-video="https://stream8.cinerama.uz/1015/tracks-v1a1/playlist.m3u8">
             <div class="img-container"><img src="https://i.imgur.com/xuhXuSr.jpg"><span class="hd-label">HD</span></div>
             <div class="title">UZREPORT</div>
@@ -791,24 +796,24 @@
             <div class="img-container"><img src="https://www.lyngsat.com/logo/tv/aa/arko-tv.png"><span class="hd-label">HD</span></div>
             <div class="title">Arko TV</div>
 </div>
- 
-                       
-      
+
+
+
           </div> 
                             </div>
- 
-  
+
+
 <div class="hr">
         <h2 style="padding: 10px;display: flex; align-items: center;font-size: 25px;margin-left: 1px;">| Телепередачи<span class="online-dot"></span></h2>
         <h2 style="color: #555; font-size: 18px; cursor: pointer;">мир и Азия</h2>
     </div>
-  
+
     <div class="scroll-row">
           <div class="channel-link"  data-video="https://starmenajo.com/hls/yemenshabab/index.m3u8">
             <div class="img-container"><img src="src/yemenshebab.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Yemen Shebab</div>
 </div>
-       
+
         <div class="channel-link"  data-video="https://streamtv.intervenhosting.net:3355/live/fortunatvlive.m3u8">
             <div class="img-container"><img src="src/fortuna.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Fortuna TV</div>
@@ -833,10 +838,10 @@
             <div class="img-container"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/06/Start_TV_logo.svg/512px-Start_TV_logo.svg.png"><span class="hd-label">HD</span></div>
             <div class="title">6 Wise TV | USA</div>
 </div>
-        
- 
-        
-        
+
+
+
+
           <div class="channel-link"  data-video="https://d1j2u714xk898n.cloudfront.net/scheduler/scheduleMaster/145.m3u8">
             <div class="img-container"><img src="https://i.imgur.com/7OyKYPw.png"><span class="hd-label">HD</span></div>
             <div class="title">24/7 Movies | Netlivy</div>
@@ -857,8 +862,8 @@
             <div class="img-container"><img src="https://i.ibb.co/swP1FDK/halaramallah-logo.png"><span class="hd-label">HD</span></div>
             <div class="title">Ajyal TV | palastine</div>
 </div>
-        
-        
+
+
            <div class="channel-link"  data-video="https://tvcdn01.oktv.kz/tv/mtrk/playlist.m3u8">
             <div class="img-container"><img src="src/001.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Kazakh Mtrk</div>
@@ -971,24 +976,24 @@
             <div class="img-container"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/MAtv_%28en%29_logo.png/512px-MAtv_%28en%29_logo.png"><span class="hd-label">HD</span></div>
             <div class="title">Mamer TV</div>
 </div>
-    
+
     </div>
 
 <div class="hr">
-    
+
     <h2 style="padding: 10px;display: flex; align-items: center; gap: 1px;font-size: 24pxmargin-left: 7px;">
       | Central Asia     
         <span class="onine-dot"></span>
     </h2>
     <h2 style="color: #555; font-size: 17px; cursor: pointer;">сейчас в мире</h2>
-   
+
 </div>
     <div class="scroll-row">
           <div class="channel-link"  data-video="https://alpha.tv.online.tm/hls/ch007.m3u8">
             <div class="img-container"><img src="src/turkmenistan.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Turkmaniston</div>
 </div>
-       
+
         <div class="channel-link"  data-video="https://alpha.tv.online.tm/hls/ch004.m3u8">
             <div class="img-container"><img src="https://i.postimg.cc/ZRv72MhL/turkmenistansport.png"><span class="hd-label">HD</span></div>
             <div class="title">Turkmaniston Sport </div>
@@ -1013,7 +1018,7 @@
             <div class="img-container"><img src="src/001.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Qozog'iston MTRK</div>
 </div>
-        
+
         <div class="channel-link"  data-video="https://hls.tamadon.live/hls/stream.m3u8">
             <div class="img-container"><img src="https://i.ibb.co/nQkLgyn/dunya-naw-tv.png"><span class="hd-label">HD</span></div>
             <div class="title">Tamadon TV</div>
@@ -1022,7 +1027,7 @@
             <div class="img-container"><img src="https://24.kz/templates/khabar24/img/logo-new.png"><span class="hd-label">HD</span></div>
             <div class="title">Silk Way</div>
 </div>
-       
+
         <div class="channel-link"  data-video="https://stream8.cinerama.uz/1016/tracks-v1a1/mono.m3u8">
             <div class="img-container"><img src="src/zor.jpg"><span class="hd-label">HD</span></div>
             <div class="title">ZO'R TV</div>
@@ -1035,8 +1040,8 @@
             <div class="img-container"><img src="src/info.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Manas TV</div>
 </div>
-        
-        
+
+
         <div class="channel-link"  data-video="https://tvcdn01.oktv.kz/tv/24kz/index.m3u8">
             <div class="img-container"><img src="https://24.kz/templates/khabar24/img/logo-new.png"><span class="hd-label">HD</span></div>
             <div class="title">Qozog'iston 24</div>
@@ -1049,13 +1054,13 @@
             <div class="img-container"><img src="src/info.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Turkman Ovozi</div>
 </div>
-        
+
         <div class="channel-link"  data-video="https://alpha.tv.online.tm/hls/ch000.m3u8">
             <div class="img-container"><img src="src/info.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Arkadag TV</div>
 </div>
-        
-        
+
+
     </div>
 <div class="hr">
         <h2 style="padding: 10px;display: flex; align-items: center;font-size: 24pxmargin-left: 7px;">| What's news?<span class="onine-dot"></span></h2>
@@ -1066,7 +1071,7 @@
             <div class="img-container"><img src="src/001.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Казак телепередачи</div>
 </div>
-       
+
         <div class="channel-link"  data-video="https://fs3.kabelko.sk/9011/index.m3u8?token=btv">
             <div class="img-container"><img src="src/info.jpg"><span class="hd-label">HD</span></div>
             <div class="title">Slovakiya BTV</div>
@@ -1095,7 +1100,7 @@
             <div class="img-container"><img src="https://i.postimg.cc/J4fSgGRk/bahrainquran.png"><span class="hd-label">HD</span></div>
             <div class="title">Bahrain Sports</div>
 </div>
-   
+
         <div class="channel-link"  data-video="https://hls.afintl.com/hls/stream.m3u8">
             <div class="img-container"><img src="https://i.imgur.com/pJU2KPh.png"><span class="hd-label">HD</span></div>
             <div class="title">AVg'oniston International</div>
@@ -1104,7 +1109,7 @@
             <div class="img-container"><img src="https://europentv.ntvbd.com/sites/all/themes/sloth/logo.png"><span class="hd-label">HD</span></div>
             <div class="title">Akaal</div>
 </div>
-     
+
         <div class="channel-link"  data-video="https://alpha.tv.online.tm/hls/ch006.m3u8">
             <div class="img-container"><img src="https://i.imgur.com/D7RBtZ2.png"><span class="hd-label">HD</span></div>
             <div class="title">Ashg'obod TV</div>
@@ -1113,8 +1118,8 @@
             <div class="img-container"><img src="https://admango.cdn.mangomolo.com/analytics/uploads/188/66d8510598.png"><span class="hd-label">HD</span></div>
             <div class="title">Alytn TV</div>
 </div>
-        
-        
+
+
         <div class="channel-link"  data-video="https://astrakhan24.bonus-tv.ru/cdn/astrakhan24/playlist.m3u8">
             <div class="img-container"><img src="https://static.wikia.nocookie.net/logopedia/images/0/04/Astro_TV_%282021%29.svg/revision/latest/scale-to-width-down/512"><span class="hd-label">HD</span></div>
             <div class="title">АСТРАХАН 24</div>
@@ -1127,20 +1132,20 @@
             <div class="img-container"><img src="https://i.imgur.com/5sis895.png"><span class="hd-label">HD</span></div>
             <div class="title">Мултфилм</div>
 </div>
-        
+
     </div>
 
-    
+
     </div>
 <!-- POPUP --><div class="video-popup" id="videoPopup">
   <div class="video-box">
     <div id="popupTitle" style="position:absolute;top:10px;left:16px;font-size:16px;font-weight:600;z-index:2"></div>
-    
+
      <i  class="fa-solid fa-chevron-down" style="font-size:23px; cursor:pointer;margin-left: 300px;margin-top: 7px;" onclick="closePopup()"></i>
-   
+
     <video id="videoPlayer" controls autoplay></video>
   </div>
-    
+
 </div><script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script><script>
 const popup=document.getElementById('videoPopup');
 const video=document.getElementById('videoPlayer');
@@ -1191,6 +1196,7 @@ window.addEventListener("load", function() {
 
 </body>
 </html>
+
  
 <!DOCTYPE html>
 <html lang="uz">
