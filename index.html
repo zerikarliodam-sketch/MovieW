@@ -1147,50 +1147,82 @@
   </div>
 
 </div><script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script><script>
-const popup=document.getElementById('videoPopup');
-const video=document.getElementById('videoPlayer');
+const popup = document.getElementById('videoPopup');
+const video = document.getElementById('videoPlayer');
 let hls;
 
-document.querySelectorAll('.channel-link').forEach(ch=>{
-  ch.onclick=()=>openPopup(ch.dataset.video, ch.querySelector('.title').innerText);
+document.querySelectorAll('.channel-link').forEach(ch => {
+    ch.onclick = () => openPopup(ch.dataset.video, ch.querySelector('.title').innerText);
 });
 
-function openPopup(url, title){
-  popup.classList.add('active');
-  document.getElementById('popupTitle').innerText = title;
+function openPopup(url, title) {
+    popup.classList.add('active');
+    document.getElementById('popupTitle').innerText = title;
 
-  video.pause();
-  video.removeAttribute('src');
-  video.load();
+    // Avvalgi oqimni to'liq tozalash
+    if (hls) {
+        hls.destroy();
+    }
 
-  if(video.canPlayType('application/vnd.apple.mpegurl')){
-    video.src = url;
-    video.play();
-  } else if(Hls.isSupported()){
-    hls = new Hls({
-      lowLatencyMode: true,
-      maxBufferLength: 6,
-      liveSyncDuration: 2
-    });
-    hls.loadSource(url);
-    hls.attachMedia(video);
-  }
+    // Ultra tez yuklanish uchun HLS sozlamalari
+    const hlsConfig = {
+        enableWorker: true,            // CPU yukini kamaytirish uchun web worker ishlatish
+        lowLatencyMode: true,          // Past kechikish rejimi
+        backBufferLength: 0,           // Xotirani tejash
+        maxBufferLength: 10,           // Maksimal bufer (sekundda)
+        maxMaxBufferLength: 15,
+        maxBufferSize: 30 * 1000 * 1000, // 30MB maksimal bufer hajmi
+        startLevel: -1,                // Avtomatik eng mos sifatdan boshlash
+        liveSyncDurationCount: 2,      // Jonli efirga tezroq ulanish
+        fragLoadingMaxRetry: 10,       // Yuklanishda xato bo'lsa qayta urinish
+        manifestLoadingTimeOut: 5000   // Kutish vaqtini cheklash
+    };
+
+    if (Hls.isSupported()) {
+        hls = new Hls(hlsConfig);
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        
+        hls.on(Hls.Events.MANIFEST_PARSED, function() {
+            video.play().catch(e => console.log("Avtomatik ijro to'xtadi: ", e));
+        });
+
+        // Xatoliklarni boshqarish va qayta tiklash
+        hls.on(Hls.Events.ERROR, function (event, data) {
+            if (data.fatal) {
+                switch (data.type) {
+                    case Hls.ErrorTypes.NETWORK_ERROR:
+                        hls.startLoad();
+                        break;
+                    case Hls.ErrorTypes.MEDIA_ERROR:
+                        hls.recoverMediaError();
+                        break;
+                    default:
+                        hls.destroy();
+                        break;
+                }
+            }
+        });
+
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        // Safari (iOS/Mac) uchun optimizatsiya
+        video.src = url;
+        video.addEventListener('loadedmetadata', function() {
+            video.play();
+        });
+    }
 }
 
-function closePopup(){
-  document.getElementById('popupTitle').innerText = '';
-  popup.classList.remove('active');
-  video.pause();
-  video.src='';
-  if(hls){hls.destroy();hls=null}
+function closePopup() {
+    document.getElementById('popupTitle').innerText = '';
+    popup.classList.remove('active');
+    video.pause();
+    video.src = "";
+    if (hls) {
+        hls.destroy();
+        hls = null;
+    }
 }
-// Sayt yuklanib bo'lgach loader'ni o'chirish
-window.addEventListener("load", function() {
-    const loader = document.getElementById("loader-wrapper");
-    setTimeout(() => {
-        loader.classList.add("loader-hidden");
-    }, 1000); // 1 soniya ko'rinib turadi
-});
 </script>
 
 
