@@ -125,7 +125,7 @@
             z-index: 2000; display: none; flex-direction: column;
         }
         .netlivy-ultra-video-player-top-navigation-bar { padding: 40px 24px 20px; display: flex; justify-content: space-between; align-items: center; }
-        #netlivy-ultra-main-video-source-element { width: 100%; aspect-ratio: 16/9; background: #000; }
+        #netlivy-ultra-main-video-source-element { width: 100%; aspect-ratio: 20/9; background: #000; }
    /* Video Loader Style */
 
 
@@ -146,7 +146,7 @@
         <img src="src/sevimli.jpg">
         <span>Sevimli</span>
     </div>
-    <div class="netlivy-individual-channel-card-element" onclick="netlivyInitiateVideoPlayback('https://stream8.cinerama.uz/1014/tracks-v1a1/playlist.m3u8', 'Milliy')">
+    <div class="netlivy-individual-channel-card-element" onclick="netlivyInitiateVideoPlayback('https://stream8.cinerama.uz/1014/tracks-v1a1/playlist.m3u8', 'Milliy TV')">
         <img src="src/milliy.jpg">
         <span>Milliy TV</span>
     </div>
@@ -307,8 +307,7 @@
 
 </body>
 </html>
-
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
@@ -515,15 +514,16 @@
 .video-popup{
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.5);
-    backdrop-filter: blur(20px);
+    background:#000;
+
     display: none;
     justify-content: center;
     align-items: center;
     z-index: 9999;
+  
 }
     .video-popup.active{display:flex}
-.video-box{width:90%;max-width:900px;aspect-ratio:20/14;background:#000;position:relative;border-radius:4px;overflow:visible}
+.video-box{width:92%;margin-bottom: 400px;max-width:900px;aspect-ratio:20/14;background:#000;position:relative;border-radius:4px;overflow:visible}
 .video-box iframe,.video-box video{width:100%;height:100%}
 
 
@@ -556,6 +556,7 @@
 
         }
 
+    
         .row-sep { margin-top: 0px; }
 
         h2 { margin: 0; font-weight: 500; font-size: 24px; }
@@ -1167,7 +1168,7 @@
   <div class="video-box">
     <div id="popupTitle" style="position:absolute;top:10px;left:16px;font-size:16px;font-weight:600;z-index:2"></div>
 
-     <i  class="fa-solid fa-chevron-down" style="font-size:23px; cursor:pointer;margin-left: 300px;margin-top: 7px;" onclick="closePopup()"></i>
+     <i  class="fa-solid fa-chevron-down" style="font-size:24px; cursor:pointer;margin-left: 316px;margin-top: 7px;" onclick="closePopup()"></i>
 
     <video id="videoPlayer" controls autoplay></video>
   </div>
@@ -1249,8 +1250,11 @@ function closePopup() {
         hls = null;
     }
 }
-</script>
+  
 
+
+    
+</script>
 
 </body>
 </html>
