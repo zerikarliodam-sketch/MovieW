@@ -40,7 +40,7 @@ const HeroBanner = () => {
         <div className='heroBannerContent'>
 
           <span className='title'>WELCOME</span>
-          <span className='subtitle'>"The ultimate destination for movie lovers. Experience the magic with us.Explore Amediateka,Tv shows and Movies"</span>
+          <span className='subtitle'>The ultimate destination for movie lovers. Experience the magic with us explore  Amediateka,Tv shows and Movies</span>
 
           <div className='inputbox'>
             <input type='text' placeholder='Поиск а медиатека и телепередачи'
