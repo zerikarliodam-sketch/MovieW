@@ -8,7 +8,7 @@ import "./Header.scss";
 
 import ContentWrapper from "../contentWrapper/ContentWrapper";
 // import logo from "../../assets/logo.png";
-import infoLogo from "../../info.jpg";
+import infoLogo from "../../netlivylogo.png";
 const Header = () => {
     const [show, setShow] = useState("top");
     const [lastScrollY, setLastScrollY] = useState(0);
@@ -78,7 +78,7 @@ const Header = () => {
             <ContentWrapper>
                 <div className="cent"> 
                <div className="logo" onClick={()=> navigate("/")}>
-   <img src={infoLogo} alt="Logo" />
+   <img src={netlivylogoLogo} alt="Logo" />
 </div>
 
                 <ul className="menuItems">
