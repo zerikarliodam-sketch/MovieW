@@ -30,19 +30,9 @@ const Header = () => {
      }
     }, [lastScrollY]);
 
-    const controlNav=()=>{
-        if(window.scrollY >200){
-           if(window.scrollY > lastScrollY && !mobileMenu)
-            setShow('hide');
-            else{
-                setShow('show');
-            }
-        }
-        else{
-            setShow('top');
-        }
-       
-    }
+    const controlNav = () => {
+    setShow("top"); // scroll bo‘lsa ham header doim ko‘rinadi
+};
 
     const searchQuery = (event)=>{
         if(query && event.key ==="Enter"){
