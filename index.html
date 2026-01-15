@@ -890,20 +890,21 @@
 
 
            <div class="channel-link"  data-video="https://tvcdn01.oktv.kz/tv/mtrk/playlist.m3u8">
-            <div class="img-container"><img src="src/qazaktv.png"><span class="nd-label">HD</span></div>
-            <div class="title">Qazaqstan Mtrk</div>
+            <div class="img-container"><img style="width: 100%; height: 100%; border-radius: 8px;" src="src/qazaktv.png"><span class="nd-label">HD</span></div>
+            <div class="title">Qazaqstan</div>
 </div>
     </div>
  <div class="row-sep"></div>
 
 <div class="scroll-row">
-          <div class="channel-link"  data-video="https://live-hls-apps-aja-fa.getaj.net/AJA/index.m3u8">
-            <div class="img-container"><img style="width: 100%; height: 100%; border-radius: 9px;" src="src/aljazeratv.jpg"><span class="nd-label">HD</span></div>
-            <div class="title">Al Jazeera</div>
-</div>
+          
        <div class="channel-link"  data-video="https://content.uplynk.com/channel/3324f2467c414329b3b0cc5cd987b6be.m3u8">
             <div class="img-container"><img style="width: 100%; height: 100%; border-radius: 8px;" src="src/abcnewstele.jpg"><span class="nd-label">HD</span></div>
             <div class="title">ABC news</div>
+</div>
+<div class="channel-link"  data-video="https://live-hls-apps-aja-fa.getaj.net/AJA/index.m3u8">
+            <div class="img-container"><img style="width: 100%; height: 100%; border-radius: 9px;" src="src/aljazeratv.jpg"><span class="nd-label">HD</span></div>
+            <div class="title">Al Jazeera</div>
 </div>
  <div class="channel-link"  data-video="http://92.50.128.180/utv/1358/index.m3u8">
             <div class="img-container"><img style="width: 100%; height: 100%; border-radius: 10px;" src="src/RBK-TV.jpg"><span class="nd-label">HD</span></div>
@@ -1624,11 +1625,11 @@ function closePopup() {
         .radio-container { padding: 0 15px; margin-top: 20px; }
         .section-title { font-size: 18px; margin: 10px 0 15px 0; font-weight: bold; }
 
-        .radio-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
+      .radio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+    gap: 15px;
+}
 
         .radio-item {
             background: var(--card-bg);
@@ -1709,7 +1710,7 @@ function closePopup() {
 
         .player-controls { display: flex; align-items: center; gap: 15px; }
         .play-btn { font-size: 32px; color: var(--text-main); }
-        
+
         /* Iqtiboslar qutisi (JS xatoni oldini olish uchun qo'shildi) */
         #quote-box { display: none; } 
     </style>
@@ -1720,7 +1721,7 @@ function closePopup() {
 <div id="quote-box"></div> <div class="radio-container">
     <div class="section-title">#Sizga yoqishi mumkin</div>
     <div class="radio-grid">
-        
+
         <div class="radio-item" onclick="playMusic(this, 'Retro Xitlar', '80-yillar', 'https://radionetplus.ice.infomaniak.ch/radionetplus-high.mp3', 'src/radionet.png')">
             <div class="img-wrapper">
                 <img src="src/radionet.png" alt="Radio Cover">
@@ -1830,11 +1831,11 @@ function closePopup() {
             // Yangi ma'lumotlarni o'rnatish
             currentActiveItem = element;
             element.classList.add('active'); // CSS effekt uchun
-            
+
             // Ikonkani o'zgartirish
             icon.className = "fas fa-pause";
 
-            
+
             // Audio ishga tushirish
             audio.src = url;
             audio.play().catch(e => console.log("Autoplay blocked:", e));
@@ -1842,8 +1843,8 @@ function closePopup() {
     }
 
     // Pastki pleerdagi tugma bosilganda
-    
-    
+
+
 </script>
 
 </body>
