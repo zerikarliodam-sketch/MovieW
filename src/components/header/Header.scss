@@ -3,17 +3,16 @@
 @import "../../mixins.scss";
 
    .logo {
-    cursor: pointer;
-display: flex;
-align-items: center;
+    height: 150px;
+    display: flex;
+    align-items: center;
 
-img{
-height: 100%;  
-object-fit: contain;
-
-filter: invert(100%);
-
-}
+    img {
+        height: 100%;   // logo container balandligi bo‘yicha kattalashadi
+        width: auto;
+        object-fit: contain;
+        filter: invert(100%);
+    }
 }
 .loo{
     font-family: 'Monsterrat', cursive;
