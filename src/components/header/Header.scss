@@ -2,18 +2,25 @@
 // CSS
 @import "../../mixins.scss";
 
-.logo{
-   cursor: pointer;
-   display: flex;
-   align-items: center;
+   .logo {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 
-   img{
-      height: 60px;   // header 60px bo‘lsa juda mos
-width: auto;
-     
-      object-fit: contain;
-filter: invert(100%); 
-   }
+    img {
+        height: 55px;        // Desktop uchun
+        width: auto;
+        object-fit: contain;
+        filter: invert(100%); // qora → oq
+        transition: height 0.3s ease; // animatsiya uchun
+    }
+
+    // Mobil ekranlar uchun
+    @include md {
+        img {
+            height: 60px;    // Mobil uchun kichraytiramiz
+        }
+    }
 }
 .loo{
     font-family: 'Monsterrat', cursive;
