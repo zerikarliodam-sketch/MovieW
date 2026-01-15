@@ -3,7 +3,7 @@
 @import "../../mixins.scss";
 
    .logo {
-    height: 150px;
+    height: 1500px;
     display: flex;
     align-items: center;
 
@@ -12,6 +12,7 @@
         width: auto;
         object-fit: contain;
  font-size: xx-large;
+filter: invert(100%);
         
     }
 }
