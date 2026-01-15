@@ -50,18 +50,7 @@
         .netlivy-ultra-application-main-title { font-size: 34px; font-weight: 700; margin: 0; letter-spacing: -1px; }
         .netlivy-ultra-application-sub-description { color: var(--netlivy-text-color-dim-gray); font-size: 16px; margin-top: 20px; }
 
-        /* SANA VA VAQT VIDJETI */
-        .netlivy-smart-date-display-widget-container {
-            display: inline-flex;
-            align-items: center;
-            background: var(--netlivy-surface-widget-glass);
-            backdrop-filter: blur(20px);
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.05);
-            margin: 0 24px 20px;
-
-        }
+       
         .netlivy-smart-date-display-widget-container i { color: var(--netlivy-primary-samsung-blue); margin-right: 8px; }
 
         .netlivy-section-content-separator-label { padding: 0 24px; font-size: 18px; font-weight: 600; margin-bottom: 15px; display: flex; justify-content: space-between; }
@@ -82,60 +71,34 @@
         }
         .netlivy-individual-channel-card-element:active { transform: scale(0.95); }
         .netlivy-individual-channel-card-element img { width: 50px; height: 50px; object-fit: contain; margin-bottom: 12px; }
-        .netlivy-individual-channel-card-element span { font-size: 13px; font-weight: 500; display: block; margin-bottom:50px;}
+        .netlivy-individual-channel-card-element span { font-size: 13px; font-weight: 500; display: block; margin-bottom:30px;}
 
-        /* HAFTALIK EFIRLAR (EPG) RO'YXATI */
-        .netlivy-weekly-program-guide-list-wrapper { padding: 0 4px 100px; }
-        .netlivy-epg-event-item-interactive-card {
-            background: var(--netlivy-surface-widget-glass);
-            border-radius: 24px;
-            margin-bottom: 120px;
-            padding: 0px;
-            display: flex;
-            align-items: center;
-            border: 1px solid rgba(255,255,255,0.03);
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .netlivy-epg-event-item-interactive-card:active { transform: scale(0.98); background: rgba(255,255,255,0.05); }
-        .netlivy-epg-event-item-interactive-card.netlivy-is-currently-broadcasting {
-            border-left: 5px solid var(--netlivy-primary-samsung-blue);
-            background: linear-gradient(90deg, rgba(3, 86, 208, 0.15), transparent);
-        }
-
-        .netlivy-epg-event-time-metadata-box { min-width: 60px; }
-        .netlivy-epg-event-start-time-text { font-weight: 700; color: var(--netlivy-primary-samsung-blue); font-size: 16px; }
-        .netlivy-epg-event-date-subtext { font-size: 10px; color: var(--netlivy-text-color-dim-gray); display: block; }
-
-        .netlivy-epg-event-main-info-container { flex-grow: 1; margin-left: 15px; }
-        .netlivy-epg-event-program-title-label { font-weight: 600; font-size: 15px; margin-bottom: 2px; display: block; }
-        .netlivy-epg-event-channel-identity-text { font-size: 12px; color: var(--netlivy-text-color-dim-gray); }
-
-        .netlivy-live-status-pulsating-indicator {
-            width: 8px; height: 8px; background: var(--netlivy-status-color-live-red);
-            border-radius: 50%; display: inline-block; margin-right: 8px;
-            box-shadow: 0 0 10px var(--netlivy-status-color-live-red);
-            animation: netlivyVisualPulseAnimation 1.5s infinite;
-        }
-        @keyframes netlivyVisualPulseAnimation { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
-
+       
+       
         /* FULLSCREEN VIDEO PLEYER */
         .netlivy-ultra-video-player-fullscreen-overlay {
             position: fixed; inset: 0; background: #000;
             z-index: 2000; display: none; flex-direction: column; 
         }
-        .netlivy-ultra-video-player-top-navigation-bar { padding: 40px 24px 20px; display: flex; justify-content: space-between; align-items: center; margin-bottom:10px;}
-   .title {
-            margin-top: 40px;
-            font-size: 15px;
-            text-align: center;
-
-
-        }
-        #netlivy-ultra-main-video-source-element { width: 97%;  aspect-ratio: 20/10; background: #000; }
-   /* Video Loader Style */
-
-
+        .netlivy-ultra-video-player-top-navigation-bar { 
+    width: 100%;
+    padding: 100px 24px 20px; /* Yuqoridan 100px joy - One UI uslubi */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    box-sizing: border-box;
+}
+   
+#netlivy-ultra-main-video-source-element { 
+    width: 99%;  /* Ekranni chetdan-chetga to'liq yopadi */
+        max-width: 100%; 
+        aspect-ratio: 20 / 11; /* Professional video standarti */
+        background: #000; 
+        margin: 0;
+        padding: 0;
+        display: block;
+  
+}
 
  </style>
 </head>
@@ -147,7 +110,7 @@
 <div class="netlivy-horizontal-channel-scroll-component">
     <div class="netlivy-individual-channel-card-element" onclick="netlivyInitiateVideoPlayback('https://stream8.cinerama.uz/1016/tracks-v1a1/mono.m3u8', 'Zo\'r TV')">
         <img src="src/zor.jpg">
-        <div class="title">Zo'r TV</div>
+        <span>Zo'r TV</span>
     </div>
     <div class="netlivy-individual-channel-card-element" onclick="netlivyInitiateVideoPlayback('https://stream8.cinerama.uz/1017/tracks-v1a1/playlist.m3u8', 'Sevimli')">
         <img src="src/sevimli.jpg">
@@ -164,7 +127,7 @@
     <div class="netlivy-individual-channel-card-element" onclick="netlivyInitiateVideoPlayback('https://stream8.cinerama.uz/1002/tracks-v1a1/playlist.m3u8', 'Yoshlar TV')">
         <img src="src/yoshlar.jpg">
         <span>
-          Yoshlar TV  
+          Yoshlar  
         </span>
     </div>
     <div class="netlivy-individual-channel-card-element" onclick="netlivyInitiateVideoPlayback('https://stream8.cinerama.uz/1217/tracks-v1a1/playlist.m3u8', 'MY5')">
@@ -182,12 +145,12 @@
     <div class="netlivy-individual-channel-card-element" onclick="netlivyInitiateVideoPlayback('https://stream8.cinerama.uz/1015/tracks-v1a1/playlist.m3u8', 'UzReport TV')">
         <img src="src/Uzreport.jpg">
         <span>
-            UzReport TV
+            UzReport 
         </span>
     </div>
     <div class="netlivy-individual-channel-card-element" onclick="netlivyInitiateVideoPlayback('https://stream8.cinerama.uz/1001/tracks-v1a1/playlist.m3u8', 'O'zbekiston TV')">
         <img src="src/uzb.jpg">
-        <span>O'zbekiston TV</span>
+        <span>O'zbekiston </span>
     </div>
     <div class="netlivy-individual-channel-card-element" onclick="netlivyInitiateVideoPlayback('https://fl.biztv.media/biz_tv_720_uni8jhub4h8fub4idejswh8dh3j94finbu4nidj39inwsj92in3d/index.m3u8', 'Biz TV')">
         <img src="src/biz.jpg">
@@ -203,7 +166,7 @@
     </div>
     <div class="netlivy-individual-channel-card-element" onclick="netlivyInitiateVideoPlayback('https://stream8.cinerama.uz/1007/playlist.m3u8', 'Bolajon TV')">
         <img src="src/bolajon.jpg">
-        <span>Bolajon TV</span>
+        <span>Bolajon </span>
     </div>
 
 </div>
