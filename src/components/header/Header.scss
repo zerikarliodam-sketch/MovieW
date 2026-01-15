@@ -9,7 +9,7 @@
     align-items: center;
 
     img {
-      height: 60px;   // logo balandligi
+      height: 80px;   // logo balandligi
       width: auto;
       object-fit: contain;
       filter: invert(100%); // qora → oq
@@ -31,7 +31,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 2;
+    z-index: 9999999;
     transition: all 0.3s ease;
 
 
